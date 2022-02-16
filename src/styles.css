@@ -111,3 +111,13 @@ img {
 .forecast-low {
   color: #06dcbe;
 }
+
+.github-address {
+  margin: 10px;
+  text-align: center;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.github-link {
+  text-decoration: none;
+}
