@@ -23,6 +23,36 @@ function formatDate(date) {
   return `${day} ${hours}:${minutes}`;
 }
 
+function displayForecast() {
+  let forecastElement = document.querySelector("#forecast");
+
+  let days = ["Mon", "Tue", "Wed", "Thu", "Fri"];
+
+  let forecastHTML = `<div class="row justify-content-center">`;
+  days.forEach(function (day) {
+    forecastHTML =
+      forecastHTML +
+      `
+        <div class="col-2 m-2 shadow-lg">
+            <div class="date">${day}</div>
+            <img
+				src="http://openweathermap.org/img/wn/50d@2x.png"
+				alt=""
+				class="weather-icon float-left"
+			/>
+            <div class="forecast-temp">
+                <span class="forecast-high">35</span>
+				<span class="forecast-low">30</span>
+            </div>
+        </div>    
+  `;
+  });
+
+  forecastHTML = forecastHTML + `</div>`;
+  forecastElement.innerHTML = forecastHTML;
+  console.log(forecastHTML);
+}
+
 function displayWeatherCondition(response) {
   document.querySelector("#city").innerHTML = response.data.name;
   document.querySelector("#temperature").innerHTML = Math.round(
@@ -39,7 +69,6 @@ function displayWeatherCondition(response) {
   );
   document.querySelector("#description").innerHTML =
     response.data.weather[0].main;
-
   document
     .querySelector("#icon")
     .setAttribute(
@@ -86,3 +115,4 @@ let celsiusLink = document.querySelector("#celsius-link");
 celsiusLink.addEventListener("click", convertToCelsius);
 
 search("Atlanta");
+displayForecast();
